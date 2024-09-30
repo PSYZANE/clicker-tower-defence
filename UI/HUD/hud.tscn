@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://co0kkbv8ap3in"]
+
+[ext_resource type="Script" path="res://UI/HUD/hud.gd" id="1_y4bs0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5slnq"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ra136"]
+bg_color = Color(0.482559, 0.656814, 0.43149, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+anti_aliasing = false
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_y4bs0")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+
+[node name="xp_bar" type="ProgressBar" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_5slnq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ra136")
+value = 50.0
+show_percentage = false

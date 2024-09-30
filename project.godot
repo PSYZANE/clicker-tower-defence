@@ -19,11 +19,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Autoloads/globals.gd"
+Path="*res://Autoloads/paths.gd"
 
 [display]
 
-window/size/viewport_width=576
-window/size/viewport_height=324
+window/size/viewport_width=600
+window/size/viewport_height=350
 window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
@@ -31,6 +32,13 @@ window/stretch/aspect="expand"
 [internationalization]
 
 locale/locale_filter_mode=1
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemy"
+2d_physics/layer_3="items"
+2d_physics/layer_4="bullets"
 
 [rendering]
 

@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cysf4ivkjxo0r"]
+[gd_scene load_steps=5 format=3 uid="uid://cysf4ivkjxo0r"]
 
 [ext_resource type="Texture2D" uid="uid://cs71gwn6bunx4" path="res://assets/white_circle.png" id="1_4padh"]
 [ext_resource type="Script" path="res://entities/player/button/button_base.gd" id="1_p113r"]
+[ext_resource type="PackedScene" uid="uid://lkv7aw0hsehh" path="res://entities/weapons/gun_1.tscn" id="3_d2a6g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1cns8"]
 radius = 33.0
 
 [node name="button_base" type="Area2D"]
+collision_mask = 14
 script = ExtResource("1_p113r")
 
 [node name="WhiteCircle" type="Sprite2D" parent="."]
@@ -16,3 +18,7 @@ texture = ExtResource("1_4padh")
 shape = SubResource("CircleShape2D_1cns8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="gun_1" parent="." instance=ExtResource("3_d2a6g")]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

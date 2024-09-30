@@ -1,22 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://dy4jnq1fdiuev"]
+[gd_scene load_steps=7 format=3 uid="uid://dy4jnq1fdiuev"]
 
+[ext_resource type="Script" path="res://world/world.gd" id="1_prqpc"]
 [ext_resource type="PackedScene" uid="uid://cysf4ivkjxo0r" path="res://entities/player/button/button_base.tscn" id="1_tx1ky"]
+[ext_resource type="Script" path="res://entities/enemies/enemies_spawner.gd" id="2_e4hj4"]
 [ext_resource type="PackedScene" uid="uid://cjim10m5wf84" path="res://entities/enemies/enemy_1/enemy_walking.tscn" id="2_er88d"]
+[ext_resource type="PackedScene" uid="uid://co0kkbv8ap3in" path="res://UI/HUD/hud.tscn" id="5_m81gt"]
 
 [sub_resource type="Curve2D" id="Curve2D_wlxj5"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -345, -224, 0, 0, 0, 0, 345, -224, 0, 0, 0, 0, 345, 195, 0, 0, 0, 0, -345, 195, 0, 0, 0, 0, -345, -224)
+"points": PackedVector2Array(0, 0, 0, 0, -345, -224, 0, 0, 0, 0, 345, -224, 0, 0, 0, 0, 345, 212, 0, 0, 0, 0, -345, 212, 0, 0, 0, 0, -345, -224)
 }
 point_count = 5
 
 [node name="world" type="Node2D"]
+script = ExtResource("1_prqpc")
+
+[node name="HUD" parent="." instance=ExtResource("5_m81gt")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="button_base" parent="." instance=ExtResource("1_tx1ky")]
 
+[node name="enemies_spawner" type="Node" parent="." node_paths=PackedStringArray("path_follow_2d")]
+script = ExtResource("2_e4hj4")
+enemies = Array[PackedScene]([ExtResource("2_er88d")])
+path_follow_2d = NodePath("../Path2D/PathFollow2D")
+
+[node name="spawn_timer" type="Timer" parent="enemies_spawner"]
+wait_time = 0.4
+
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_wlxj5")
 
-[node name="enemy_walking" parent="." instance=ExtResource("2_er88d")]
-position = Vector2(165, 78)
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(227.81, 212)
+rotation = 3.14159
+progress = 1243.19
+
+[node name="bullets_collection" type="Node" parent="."]
+
+[node name="enemies_collection" type="Node" parent="."]
+
+[connection signal="timeout" from="enemies_spawner/spawn_timer" to="enemies_spawner" method="_on_spawn_timer_timeout"]

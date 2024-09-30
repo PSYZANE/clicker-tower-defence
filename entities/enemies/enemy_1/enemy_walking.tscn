@@ -6,8 +6,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_gqkch"]
 radius = 33.0
 
-[node name="enemy_walking" type="Area2D"]
+[node name="enemy_walking" type="Area2D" groups=["can_hit"]]
 z_index = 1
+scale = Vector2(0.6, 0.6)
+collision_layer = 2
+collision_mask = 12
 script = ExtResource("1_3yycs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["can_hit"]]
@@ -15,5 +18,4 @@ self_modulate = Color(1, 0.447059, 0.184314, 1)
 texture = ExtResource("1_k0ekl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_gqkch")
