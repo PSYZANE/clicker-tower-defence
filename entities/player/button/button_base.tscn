@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cysf4ivkjxo0r"]
+
+[ext_resource type="Texture2D" uid="uid://cs71gwn6bunx4" path="res://assets/white_circle.png" id="1_4padh"]
+[ext_resource type="Script" path="res://entities/player/button/button_base.gd" id="1_p113r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1cns8"]
+radius = 33.0
+
+[node name="button_base" type="Area2D"]
+script = ExtResource("1_p113r")
+
+[node name="WhiteCircle" type="Sprite2D" parent="."]
+texture = ExtResource("1_4padh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1cns8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

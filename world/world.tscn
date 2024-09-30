@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy4jnq1fdiuev"]
+
+[ext_resource type="PackedScene" uid="uid://cysf4ivkjxo0r" path="res://entities/player/button/button_base.tscn" id="1_tx1ky"]
+[ext_resource type="PackedScene" uid="uid://cjim10m5wf84" path="res://entities/enemies/enemy_1/enemy_walking.tscn" id="2_er88d"]
+
+[sub_resource type="Curve2D" id="Curve2D_wlxj5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -345, -224, 0, 0, 0, 0, 345, -224, 0, 0, 0, 0, 345, 195, 0, 0, 0, 0, -345, 195, 0, 0, 0, 0, -345, -224)
+}
+point_count = 5
+
+[node name="world" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="button_base" parent="." instance=ExtResource("1_tx1ky")]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_wlxj5")
+
+[node name="enemy_walking" parent="." instance=ExtResource("2_er88d")]
+position = Vector2(165, 78)
